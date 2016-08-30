@@ -4,7 +4,6 @@
 import os
 import sys
 import time
-import WConio
 
 plusarr=[] #插件列表
 backdoor_count=0
@@ -33,7 +32,7 @@ def Scan(path):
                         result = sys.modules['plus.'+plus].Check(filestr,filepath)
 
                         if result!=None:
-                            WConio.textcolor(WConio.RED)
+                            
                             print u'文件: ',
                             print filepath
                             print u'后门描述: ',
@@ -43,7 +42,7 @@ def Scan(path):
                                 print code[0][0:100]
                             print u'最后修改时间: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
                             backdoor_count= backdoor_count+1
-                            WConio.textcolor(WConio.WHITE)
+                          
                             break
 
 def ScanFiletime(path,times):
