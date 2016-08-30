@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-#coding:gbk
+#coding:utf-8
 
 import re
 
