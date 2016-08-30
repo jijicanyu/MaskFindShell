@@ -23,7 +23,7 @@ def Check(filestr,filepath):
             if white[0][0] in filepath.replace('\\','/') and white[1][0] in result[0][0]:
                 isok=0
         if isok:
-            return result,'$_GET[a]($_POST[b])动态函数后门'
+            return result,'$_GET[a]($_POST[b])'
     else:
         result = re.compile(rule2).findall(filestr)
         finalresult = result
@@ -41,7 +41,7 @@ def Check(filestr,filepath):
                                     if white[0][0] in filepath.replace('\\','/') and white[1][0] in result[0][0]:
                                         isok=0
                                 if isok:
-                                    return ((resultson.group(),),(result[0][0],)),'$a($b)动态函数后门'
+                                    return ((resultson.group(),),(result[0][0],)),'Danger'
                         except:
                             pass
                 for var in vararr:
@@ -55,7 +55,7 @@ def Check(filestr,filepath):
                                     if white[0][0] in filepath.replace('\\','/') and white[1][0] in result[0][0]:
                                         isok=0
                                 if isok:
-                                    return ((resultson.group(),),(result[0][0],)),'$a($b)动态函数后门'
+                                    return ((resultson.group(),),(result[0][0],)),'Danger'
                         except:
                             pass
 
@@ -68,7 +68,7 @@ def Check(filestr,filepath):
                             if white[0][0] in filepath.replace('\\','/') and white[1][0] in result[0][0]:
                                 isok=0
                         if isok:
-                            return ((result1.group(),),(result2.group(),),(finalresult[0][0],)),'$a($b)动态函数后门'
+                            return ((result1.group(),),(result2.group(),),(finalresult[0][0],)),'Danger'
                 except:
                     continue
                 return None

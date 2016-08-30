@@ -31,5 +31,5 @@ def Check(filestr,filepath):
                 if white[0][0] in filepath.replace('\\','/') and white[1][0] in key:
                     isok=0
             if isok:
-                return ((key,),),'PHP ddos_cc¹¥»÷½Å±¾'
+                return ((key,),),'PHP ddos_cc'
     return None

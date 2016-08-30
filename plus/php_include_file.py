@@ -23,7 +23,7 @@ def Check(filestr,filepath):
                 if isok==1:
                     resultlist.append(key)
             if len(resultlist)>0:
-                return resultlist,'include|require(_once)非法引用后门'
+                return resultlist,'include|require(_once)'
 
         result = re.compile(rule2).findall(filestr)
         if len(result)>0:
@@ -36,12 +36,12 @@ def Check(filestr,filepath):
 
                 for var in vararr:
                     if var in group[4]:
-                        return (group,),'include|require(_once)非法引用动态参数后门'
+                        return (group,),'include|require(_once)'
 
                 resultson = re.search('\\'+group[4]+rule3,filestr)
                 try:
                     if len(resultson.groups())>0:
-                        return ((resultson.group(),),(group[0],)),'include|require(_once)非法引用动态参数后门'
+                        return ((resultson.group(),),(group[0],)),'include|require(_once)'
                 except:
                     continue
         return None

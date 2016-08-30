@@ -9,6 +9,6 @@ def Check(filestr,filepath):
     if 'call_user_func' in filestr:
         result = re.compile(rule).findall(filestr)
         if len(result)>0:
-            return result,'call_user_funcºóÃÅ'
+            return result,'call_user_func'
     else:
         return None

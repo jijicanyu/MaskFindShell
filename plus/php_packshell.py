@@ -22,7 +22,7 @@ def Check(filestr,filepath):
                     if white[0][0] in filepath.replace('\\','/') and white[1][0] in key:
                         isok=0
                 if isok:
-                    return (('暂不提供',),),'PHP 文件打包后门程序'
+                    return (('Danger',),),'PHP'
     except:
         pass
     return None

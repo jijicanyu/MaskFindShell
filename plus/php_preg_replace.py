@@ -10,6 +10,6 @@ def Check(filestr,filepath):
     if 'preg_replace' in filestr:
         result = re.compile(rule1).findall(filestr)
         if len(result)>0:
-            return result,'preg_replaceºóÃÅ'
+            return result,'preg_replace'
     else:
         return None

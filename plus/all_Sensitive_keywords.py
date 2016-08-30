@@ -53,7 +53,7 @@ def Check(filestr,filepath):
                 if white[0][0] in filepath.replace('\\','/') and white[1][0] in key:
                     isok=0
             if isok:
-                return ((key,),),'后门敏感关键字'
+                return ((key,),),'Danger'
 
     #纯关键词查找-确定后门
     for key in knownshell:
@@ -63,7 +63,7 @@ def Check(filestr,filepath):
                 if white[0][0] in filepath.replace('\\','/') and white[1][0] in key:
                     isok=0
             if isok:
-                return ((key,),),'已知后门特征'
+                return ((key,),),'Danger'
 
     #按正则查找
     for rule in rulelist:
@@ -71,7 +71,7 @@ def Check(filestr,filepath):
         try:
 
             if result.group():
-                return ((result.group(),),),'已知后门特征'
+                return ((result.group(),),),'Danger'
         except:
             pass
 
@@ -82,13 +82,13 @@ def Check(filestr,filepath):
             if white in filepath.replace('\\','/'):
                 isok=0
         if isok:
-            return (('cmd.exe和Program Files',),),'敏感后门关键字'
+            return (('cmd.exe和Program Files',),),'Danger'
 
     #敏感关键字，已知后门类型
     if 'www.phpdp.org' in filestr:
-        return (('www.phpdp.org',),),'PHP神盾加密后门敏感关键字'
+        return (('www.phpdp.org',),),'Danger'
 
     if 'www.phpjm.net' in filestr:
-        return (('www.phpjm.net',),),'PHP加密后门敏感关键字'
+        return (('www.phpjm.net',),),'Danger'
 
     return None

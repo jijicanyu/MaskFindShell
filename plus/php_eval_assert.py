@@ -15,16 +15,16 @@ def Check(filestr,filepath):
             for group in result:
                 for var in vararr:
                     if var in group[2]:
-                        return result,'eval|assert后门'
+                        return result,'eval|assert'
                 resultson = re.search('\\'+group[2]+rule2,filestr)
                 try:
                     if len(resultson.groups())>0:
-                        return ((resultson.group(),),(result[0][0],)),'eval|assert($a)动态eval|assert后门'
+                        return ((resultson.group(),),(result[0][0],)),'eval|assert($a)'
                 except:
                     continue
 
         else:
             result = re.compile(rule1).findall(filestr)
             if len(result)>0:
-                return result,'eval|assert(base64加密后门'
+                return result,'eval|assert(base64)'
     return None

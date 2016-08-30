@@ -45,7 +45,7 @@ def Check(filestr,filepath):
 		result=((d.group(),),)
 
 	if tag==1:
-		return result,u"疑似JSP木马"
+		return result,'Danger'
 
 	return None
 

@@ -33,14 +33,14 @@ def Scan(path):
 
                         if result!=None:
                             
-                            print u'文件: ',
+                            print u'FilePath: ',
                             print filepath
-                            print u'后门描述: ',
+                            print u'describe: ',
                             print result[1]
-                            print u'后门代码: ',
+                            print u'code: ',
                             for code in result[0]:
                                 print code[0][0:100]
-                            print u'最后修改时间: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
+                            print u'time: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
                             backdoor_count= backdoor_count+1
                           
                             break
@@ -49,7 +49,7 @@ def ScanFiletime(path,times):
     global backdoor_count
     times = time.mktime(time.strptime(times, '%Y-%m-%d %H:%M:%S'))
     print u'########################################'
-    print u'文件路径           最后修改时间   \n'
+    print u'FilePath           time   \n'
 
     for root,dirs,files in os.walk(path):
         for curfile in files:
@@ -91,24 +91,24 @@ if __name__ == "__main__":
     """
 
     if len(sys.argv)!=3 and len(sys.argv)!=2:
-        print u'【参数错误】'
-        print u'按恶意代码查杀: '+sys.argv[0]+u' 目录名'
-        print u'按修改时间查杀: '+sys.argv[0]+u' 目录名 最后修改时间(格式:"2013-09-09 12:00:00")'
+        print u'【Error】'
+        print u'style1: '+sys.argv[0]+u' filepath'
+        print u'style2: '+sys.argv[0]+u' filepath time(Forexample:"2013-09-09 12:00:00")'
         sys.exit()
        
     if os.path.lexists(sys.argv[1])==False:
-        print u'【错误提示】：指定的扫描目录不存在---'
+        print u'【Error Tag】：not found file---'
         sys.exit()
 
     if len(sys.argv)==2:
-        print u'\n\n【开始查杀】'
+        print u'\n\n【Start】'
         print sys.argv[1]+'\n'
         Scan(sys.argv[1])
-        print u'【查杀完成】'
-        print u'\t后门总数: '+str(backdoor_count)
+        print u'【End】'
+        print u'\tsum number: '+str(backdoor_count)
     else:
-        print u'\n\n【开始查找】'
+        print u'\n\n【Start】'
         print sys.argv[1]+'\n'
         ScanFiletime(sys.argv[1],sys.argv[2])
-        print u'\n【查找完成】'
-        print u'\t文件总数: '+str(backdoor_count)
+        print u'\n【End】'
+        print u'\tsum number: '+str(backdoor_count)

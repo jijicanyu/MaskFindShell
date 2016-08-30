@@ -9,6 +9,6 @@ def Check(filestr,filepath):
     if 'array_map' in filestr:
         result = re.compile(rule).findall(filestr)
         if len(result)>0:
-            return result,'array_mapºóÃÅ'
+            return result,'array_map'
     else:
         return None
