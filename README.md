@@ -5,5 +5,7 @@ linux下webshell查杀工具
 
 使用：python MaskFindShell.py   扫描目录
 
-测试：python MaskFindShell.py   ./test
+测试一：python MaskFindShell.py   ./test             （基于规则匹配）
+
+测试二:python MaskFindShell.py ./test "2016-06-01 12:00:00"  （基于修改时间）
 
