@@ -7,8 +7,8 @@ jsp木马判断机制2
 
 import re
 
-keyword_a=r"Runtime\.getRuntime\(\)\.exec"  #关键字匹配 
-keyword_b=r"java\.io\.FileOutputStream\(application\.getRealPath\("      #关键字匹配 
+keyword_a=r"runtime\.getruntime\(\)\.exec"  #关键字匹配 
+keyword_b=r"java\.io\.fileoutputstream\(application\.getrealpath\("      #关键字匹配 
 
 
 def Check(filestr,filepath):
