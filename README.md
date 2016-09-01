@@ -7,5 +7,5 @@ linux下webshell查杀工具
 
 测试一：python MaskFindShell.py   ./test             （基于规则匹配）
 
-测试二:python MaskFindShell.py ./test "2016-06-01 12:00:00"  （基于修改时间）
+测试二：python MaskFindShell.py ./test "2016-06-01 12:00:00"  （基于修改时间)
 
