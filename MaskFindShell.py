@@ -32,7 +32,7 @@ def Scan(path):
                 else:
                     c=c+"."+f[i]
             suffix = c.lower()
-            if 'php' in suffix or 'jsp' in suffix:
+            if '.php' in suffix or '.jsp' in suffix:
                 filepath = os.path.join(root,filename)
                 if os.path.getsize(filepath)<500000:
                         for plus in plusarr:
