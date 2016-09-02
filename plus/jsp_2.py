@@ -23,6 +23,6 @@ def Check(filestr,filepath):
 		return ((a.group(),),),'Danger'
 
 	elif b:
-		return ((a.group(),),),'Danger'
+		return ((b.group(),),),'Danger'
 
 	return None
