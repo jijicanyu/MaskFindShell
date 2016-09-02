@@ -24,49 +24,58 @@ def Scan(path):
     global backdoor_count
     for root,dirs,files in os.walk(path):
         for filename in files:
-            filepath = os.path.join(root,filename)
-            if os.path.getsize(filepath)<500000:
-                    for plus in plusarr:
-                        file= open(filepath,"rb")
-                        filestr = file.read()
-                        file.close()
-                        result = sys.modules['plus.'+plus].Check(filestr,filepath)
+            f=filename.split(".")
+            c=""
+            for i in range(len(f)):
+                if i==0:
+                    pass
+                else:
+                    c=c+"."+f[i]
+            suffix = c.lower()
+            if 'php' in suffix or 'jsp' in suffix:
+                filepath = os.path.join(root,filename)
+                if os.path.getsize(filepath)<500000:
+                        for plus in plusarr:
+                            file= open(filepath,"rb")
+                            filestr = file.read()
+                            file.close()
+                            result = sys.modules['plus.'+plus].Check(filestr,filepath)
 
-                        if result!=None:
-                            
-                            print u'FilePath: ',
-                            print filepath
-                            print u'describe: ',
-                            print result[1]
-                            print u'code: ',
-                            for code in result[0]:
-                                print code[0][0:100]
-                            print u'time: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
-                            backdoor_count= backdoor_count+1
-                            '''
-                            将疑似木马文件，copy到一个文件夹内。
-
-                            '''
-                            try:
-                                if os.path.exists("./ScanResult"):
-                                    pass
-                                else:
-                                    os.system("mkdir ScanResult")
-
-                                file_path="./ScanResult/"+filepath    ##file path
-
-                                file_dire=os.path.dirname(file_path)
-
-                                try:
-                                    os.makedirs(file_dire)
-                                except:
-                                    pass
-
-                                shutil.copyfile(filepath,file_path)
-                            except:
-                                print 'Permission denied'
+                            if result!=None:
                                 
-                            break
+                                print u'FilePath: ',
+                                print filepath
+                                print u'describe: ',
+                                print result[1]
+                                print u'code: ',
+                                for code in result[0]:
+                                    print code[0][0:100]
+                                print u'time: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
+                                backdoor_count= backdoor_count+1
+                                '''
+                                将疑似木马文件，copy到一个文件夹内。
+
+                                '''
+                                try:
+                                    if os.path.exists("./ScanResult"):
+                                        pass
+                                    else:
+                                        os.system("mkdir ScanResult")
+
+                                    file_path="./ScanResult/"+filepath    ##file path
+
+                                    file_dire=os.path.dirname(file_path)
+
+                                    try:
+                                        os.makedirs(file_dire)
+                                    except:
+                                        pass
+
+                                    shutil.copyfile(filepath,file_path)
+                                except:
+                                    print 'Permission denied'
+                                    
+                                break
 
 def ScanFiletime(path,times):
     global backdoor_count
@@ -76,13 +85,21 @@ def ScanFiletime(path,times):
 
     for root,dirs,files in os.walk(path):
         for curfile in files:
-                suffix = c.lower()
-                filepath = os.path.join(root,curfile)
-                if 'php' in suffix or 'jsp' in suffix:
-                    FileTime =os.path.getmtime(filepath)
-                    if FileTime>times:
-                        backdoor_count +=1
-                        print filepath+'        '+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(FileTime))
+            f=curfile.split(".")
+            c=""
+            for i in range(len(f)):
+                if i==0:
+                    pass
+                else:
+                    c=c+"."+f[i]
+
+            suffix = c.lower()
+            filepath = os.path.join(root,curfile)
+            if '.php' in suffix or '.jsp' in suffix:
+                FileTime =os.path.getmtime(filepath)
+                if FileTime>times:
+                    backdoor_count +=1
+                    print filepath+'        '+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(FileTime))
 
 if __name__ == "__main__":
     print u'----------------------------------------'
