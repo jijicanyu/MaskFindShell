@@ -16,6 +16,7 @@ def Check(filestr,filepath):
 	filestr=filestr.lower()
 
 	a=re.search(keyword_a,filestr)
+
 	b=re.search(keyword_b,filestr)
 
 	if a:

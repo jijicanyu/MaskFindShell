@@ -42,6 +42,12 @@ def Scan(path):
                                 print code[0][0:100]
                             print u'time: '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(filepath)))+'\n\n'
                             backdoor_count= backdoor_count+1
+                            '''
+                            将疑似木马文件，copy到一个文件夹内。
+                            '''
+                            os.system("copy "+filepath+" ./ScanResult/")
+                            
+
                           
                             break
 
