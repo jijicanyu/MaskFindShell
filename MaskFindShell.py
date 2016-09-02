@@ -4,6 +4,7 @@
 import os
 import sys
 import time
+import shutil
 
 plusarr=[] #插件列表
 backdoor_count=0
@@ -44,11 +45,27 @@ def Scan(path):
                             backdoor_count= backdoor_count+1
                             '''
                             将疑似木马文件，copy到一个文件夹内。
-                            '''
-                            os.system("copy "+filepath+" ./ScanResult/")
-                            
 
-                          
+                            '''
+                            try:
+                                if os.path.exists("./ScanResult"):
+                                    pass
+                                else:
+                                    os.system("mkdir ScanResult")
+
+                                file_path="./ScanResult/"+filepath    ##file path
+
+                                file_dire=os.path.dirname(file_path)
+
+                                try:
+                                    os.makedirs(file_dire)
+                                except:
+                                    pass
+
+                                shutil.copyfile(filepath,file_path)
+                            except:
+                                print 'Permission denied'
+                                
                             break
 
 def ScanFiletime(path,times):
@@ -59,14 +76,6 @@ def ScanFiletime(path,times):
 
     for root,dirs,files in os.walk(path):
         for curfile in files:
-            if '.' in curfile:
-                f=curfile.split(".")
-                c=""
-                for i in range(len(f)):
-                    if i==0:
-                       pass
-                    else:
-                        c=c+"."+f[i]
                 suffix = c.lower()
                 filepath = os.path.join(root,curfile)
                 if 'php' in suffix or 'jsp' in suffix:
