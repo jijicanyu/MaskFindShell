@@ -80,8 +80,8 @@ def Scan(path):
 def ScanFiletime(path,times):
     global backdoor_count
     times = time.mktime(time.strptime(times, '%Y-%m-%d %H:%M:%S'))
-    print u'########################################'
-    print u'FilePath           time   \n'
+    print '########################################'
+    print 'FilePath           time   \n'
 
     for root,dirs,files in os.walk(path):
         for curfile in files:
@@ -102,8 +102,8 @@ def ScanFiletime(path,times):
                     print filepath+'        '+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(FileTime))
 
 if __name__ == "__main__":
-    print u'----------------------------------------'
-    print u"""
+    print '----------------------------------------'
+    print """
           ╭╮　　　　　　　╭╮　　
        　││　　　　　　　││　　
        ╭┴┴———————┴┴╮
@@ -123,24 +123,24 @@ if __name__ == "__main__":
     """
 
     if len(sys.argv)!=3 and len(sys.argv)!=2:
-        print u'【Error】'
-        print u'style1: '+sys.argv[0]+u' filepath'
-        print u'style2: '+sys.argv[0]+u' filepath time(Forexample:"2013-09-09 12:00:00")'
+        print '【Error】'
+        print 'style1: '+sys.argv[0]+' filepath'
+        print 'style2: '+sys.argv[0]+' filepath time(Forexample:"2013-09-09 12:00:00")'
         sys.exit()
        
     if os.path.lexists(sys.argv[1])==False:
-        print u'【Error Tag】：not found file---'
+        print '【Error Tag】：not found file---'
         sys.exit()
 
     if len(sys.argv)==2:
-        print u'\n\n【Start】'
+        print '\n\n【Start】'
         print sys.argv[1]+'\n'
         Scan(sys.argv[1])
-        print u'【End】'
-        print u'\tsum number: '+str(backdoor_count)
+        print '【End】'
+        print '\tsum number: '+str(backdoor_count)
     else:
-        print u'\n\n【Start】'
+        print '\n\n【Start】'
         print sys.argv[1]+'\n'
         ScanFiletime(sys.argv[1],sys.argv[2])
-        print u'\n【End】'
-        print u'\tsum number: '+str(backdoor_count)
+        print '\n【End】'
+        print '\tsum number: '+str(backdoor_count)
