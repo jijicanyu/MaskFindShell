@@ -118,7 +118,7 @@ if __name__ == "__main__":
 ----┏━☆━━━━━━━━━━━━┓----
 ----┃ MaskFindShell 1.0          ┃----
 ----┃ Author:nmask               ┃----
-----┃ SITE:www.maskghost.com     ┃----
+----┃ SITE:thief.one             ┃----
 ----┗━━━━━━━━━━━━━━┛----
     """
 
